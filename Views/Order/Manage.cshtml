@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DataBundleSystem.Models.Order>
+
+<h2>Manage Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bundle</th>
+            <th>Phone</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Bundle?.Name</td>
+                <td>@order.PhoneNumber</td>
+                <td>GH₵@order.AmountPaid</td>
+                <td>@order.Status</td>
+                <td>@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <a href="/Order/UpdateStatus?id=@order.Id&status=Paid" class="btn btn-success btn-sm">Paid</a>
+                    <a href="/Order/UpdateStatus?id=@order.Id&status=Delivered" class="btn btn-primary btn-sm">Delivered</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

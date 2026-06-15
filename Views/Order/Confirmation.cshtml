@@ -1,0 +1,12 @@
+﻿@model DataBundleSystem.Models.Order
+@{
+    var bundle = ViewBag.Bundle as DataBundleSystem.Models.Bundle;
+}
+
+<div class="alert alert-success">
+    <h2>Order Received! 🎉</h2>
+    <p>Your order for <strong>@bundle?.Name</strong> has been recorded.</p>
+    <p>We will deliver your <strong>@bundle?.DataSize</strong> data to <strong>@Model.PhoneNumber</strong> shortly after confirming payment.</p>
+</div>
+
+<a asp-controller="Bundle" asp-action="Index" class="btn btn-secondary">Back to Bundles</a>

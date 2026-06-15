@@ -1,0 +1,23 @@
+﻿@model DataBundleSystem.Models.Order
+@{
+    var bundle = ViewBag.Bundle as DataBundleSystem.Models.Bundle;
+}
+
+<h2>Order: @bundle?.Name</h2>
+<p>Price: GH₵@bundle?.Price</p>
+
+<div class="alert alert-info">
+    <strong>Payment Instructions:</strong><br />
+    Send GH₵@bundle?.Price via Mobile Money to:<br />
+    <strong>0531676460 (Your Name)</strong><br />
+    Then enter the phone number you used to pay below.
+</div>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="BundleId" value="@bundle?.Id" />
+    <div class="mb-3">
+        <label>Your Phone Number (the one receiving the data)</label>
+        <input asp-for="PhoneNumber" class="form-control" placeholder="e.g. 024XXXXXXX" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm Order</button>
+</form>

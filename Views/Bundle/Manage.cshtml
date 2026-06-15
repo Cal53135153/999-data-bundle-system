@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DataBundleSystem.Models.Bundle>
+
+@{
+    ViewData["Title"] = "Manage Bundles";
+}
+
+<h2>Manage Bundles</h2>
+<a asp-action="Create" class="btn btn-success mb-3">+ Add New Bundle</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Data Size</th>
+            <th>Price</th>
+            <th>Validity</th>
+            <th>Available</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bundle in Model)
+        {
+            <tr>
+                <td>@bundle.Name</td>
+                <td>@bundle.DataSize</td>
+                <td>GH₵@bundle.Price</td>
+                <td>@bundle.ValidityDays days</td>
+                <td>@bundle.IsAvailable</td>
+                <td><a href="/Bundle/Delete/@bundle.Id" class="btn btn-danger btn-sm">Delete</a></td>
+                
+            </tr>
+        }
+    </tbody>
+</table>  

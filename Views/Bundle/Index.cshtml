@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DataBundleSystem.Models.Bundle>
+
+@{
+    ViewData["Title"] = "Data Bundles";
+}
+
+<h2>Available Data Bundles</h2>
+
+<div class="row">
+    @foreach (var bundle in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@bundle.Name</h5>
+                    <p class="card-text">@bundle.Description</p>
+                    <p><strong>@bundle.DataSize</strong></p>
+                    <p>Valid for @bundle.ValidityDays days</p>
+                    <h4>GH₵ @bundle.Price</h4>
+                    <a asp-controller="Order" asp-action="Create" asp-route-bundleId="@bundle.Id" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
